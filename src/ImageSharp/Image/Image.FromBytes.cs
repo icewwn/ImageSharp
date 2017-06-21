@@ -26,9 +26,9 @@ namespace ImageSharp
         /// Create a new instance of the <see cref="Image{Rgba32}"/> class from the given byte array.
         /// </summary>
         /// <param name="data">The byte array containing image data.</param>
-        /// <param name="mimeType">the mime type of the decoded image.</param>
+        /// <param name="format">The format of the decoded image.</param>
         /// <returns>A new <see cref="Image{Rgba32}"/>.</returns>
-        public static Image<Rgba32> Load(byte[] data, out string mimeType) => Load<Rgba32>(null, data, out mimeType);
+        public static Image<Rgba32> Load(byte[] data, out IImageFormat format) => Load<Rgba32>(null, data, out format);
 
         /// <summary>
         /// Create a new instance of the <see cref="Image{TPixel}"/> class from the given byte array.
@@ -43,9 +43,9 @@ namespace ImageSharp
         /// </summary>
         /// <param name="config">The config for the decoder.</param>
         /// <param name="data">The byte array containing image data.</param>
-        /// <param name="mimeType">the mime type of the decoded image.</param>
+        /// <param name="format">The format of the decoded image.</param>
         /// <returns>A new <see cref="Image{Rgba32}"/>.</returns>
-        public static Image<Rgba32> Load(Configuration config, byte[] data, out string mimeType) => Load<Rgba32>(config, data, out mimeType);
+        public static Image<Rgba32> Load(Configuration config, byte[] data, out IImageFormat format) => Load<Rgba32>(config, data, out format);
 
         /// <summary>
         /// Create a new instance of the <see cref="Image{Rgba32}"/> class from the given byte array.
@@ -80,13 +80,13 @@ namespace ImageSharp
         /// Create a new instance of the <see cref="Image{TPixel}"/> class from the given byte array.
         /// </summary>
         /// <param name="data">The byte array containing image data.</param>
-        /// <param name="mimeType">the mime type of the decoded image.</param>
+        /// <param name="format">The format of the decoded image.</param>
         /// <typeparam name="TPixel">The pixel format.</typeparam>
         /// <returns>A new <see cref="Image{TPixel}"/>.</returns>
-        public static Image<TPixel> Load<TPixel>(byte[] data, out string mimeType)
+        public static Image<TPixel> Load<TPixel>(byte[] data, out IImageFormat format)
             where TPixel : struct, IPixel<TPixel>
         {
-            return Load<TPixel>(null, data, out mimeType);
+            return Load<TPixel>(null, data, out format);
         }
 
         /// <summary>
@@ -110,15 +110,15 @@ namespace ImageSharp
         /// </summary>
         /// <param name="config">The configuration options.</param>
         /// <param name="data">The byte array containing image data.</param>
-        /// <param name="mimeType">the mime type of the decoded image.</param>
+        /// <param name="format">The format of the decoded image.</param>
         /// <typeparam name="TPixel">The pixel format.</typeparam>
         /// <returns>A new <see cref="Image{TPixel}"/>.</returns>
-        public static Image<TPixel> Load<TPixel>(Configuration config, byte[] data, out string mimeType)
+        public static Image<TPixel> Load<TPixel>(Configuration config, byte[] data, out IImageFormat format)
             where TPixel : struct, IPixel<TPixel>
         {
             using (MemoryStream ms = new MemoryStream(data))
             {
-                return Load<TPixel>(config, ms, out mimeType);
+                return Load<TPixel>(config, ms, out format);
             }
         }
 

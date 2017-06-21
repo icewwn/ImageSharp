@@ -6,7 +6,6 @@
 namespace ImageSharp.Benchmarks.Image
 {
     using System.Drawing;
-    using System.Drawing.Imaging;
     using System.IO;
 
     using BenchmarkDotNet.Attributes;
@@ -15,6 +14,7 @@ namespace ImageSharp.Benchmarks.Image
     using ImageSharp.Quantizers;
 
     using CoreImage = ImageSharp.Image;
+    using ImageFormat = System.Drawing.Imaging.ImageFormat;
 
     public class EncodePng : BenchmarkBase
     {

@@ -5,7 +5,6 @@
 
 namespace ImageSharp.Formats
 {
-    using System.Collections.Generic;
     using System.IO;
 
     using ImageSharp.PixelFormats;
@@ -17,10 +16,7 @@ namespace ImageSharp.Formats
     public class PngEncoder : IImageEncoder
     {
         /// <inheritdoc/>
-        public IEnumerable<string> MimeTypes => PngConstants.MimeTypes;
-
-        /// <inheritdoc/>
-        public IEnumerable<string> FileExtensions => PngConstants.FileExtensions;
+        public IImageFormat Format => PngConstants.Format;
 
         /// <summary>
         /// Gets or sets a value indicating whether the metadata should be ignored when the image is being decoded.

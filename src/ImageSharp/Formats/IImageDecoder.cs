@@ -6,7 +6,6 @@
 namespace ImageSharp.Formats
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
 
     using ImageSharp.PixelFormats;
@@ -17,14 +16,9 @@ namespace ImageSharp.Formats
     public interface IImageDecoder
     {
         /// <summary>
-        /// Gets the collection of mime types that this decoder supports decoding on.
+        /// Gets the format information for this decoder.
         /// </summary>
-        IEnumerable<string> MimeTypes { get; }
-
-        /// <summary>
-        /// Gets the collection of file extensionsthis decoder supports decoding.
-        /// </summary>
-        IEnumerable<string> FileExtensions { get; }
+        IImageFormat Format { get; }
 
         /// <summary>
         /// Gets the size of the header for this image type.

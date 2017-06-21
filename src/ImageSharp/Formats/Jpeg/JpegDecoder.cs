@@ -6,7 +6,6 @@
 namespace ImageSharp.Formats
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
 
     using ImageSharp.PixelFormats;
@@ -16,16 +15,13 @@ namespace ImageSharp.Formats
     /// </summary>
     public class JpegDecoder : IImageDecoder
     {
+        /// <inheritdoc/>
+        public IImageFormat Format => JpegConstants.Format;
+
         /// <summary>
         /// Gets or sets a value indicating whether the metadata should be ignored when the image is being decoded.
         /// </summary>
         public bool IgnoreMetadata { get; set; }
-
-        /// <inheritdoc/>
-        public IEnumerable<string> MimeTypes => JpegConstants.MimeTypes;
-
-        /// <inheritdoc/>
-        public IEnumerable<string> FileExtensions => JpegConstants.FileExtensions;
 
         /// <inheritdoc/>
         public int HeaderSize => 11;

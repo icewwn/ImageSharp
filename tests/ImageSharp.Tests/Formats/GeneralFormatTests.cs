@@ -7,6 +7,7 @@ namespace ImageSharp.Tests
 {
     using System.IO;
 
+    using ImageSharp.Formats;
     using ImageSharp.PixelFormats;
 
     using Xunit;
@@ -135,7 +136,7 @@ namespace ImageSharp.Tests
             foreach (TestFile file in Files)
             {
                 byte[] serialized;
-                using (Image<Rgba32> image = Image.Load(file.Bytes, out string mimeType))
+                using (Image<Rgba32> image = Image.Load(file.Bytes, out IImageFormat mimeType))
                 using (MemoryStream memoryStream = new MemoryStream())
                 {
                     image.Save(memoryStream, mimeType);

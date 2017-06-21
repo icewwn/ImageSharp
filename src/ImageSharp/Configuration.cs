@@ -85,8 +85,9 @@ namespace ImageSharp
         public void AddImageFormat(IImageDecoder decoder)
         {
             Guard.NotNull(decoder, nameof(decoder));
-            Guard.NotNullOrEmpty(decoder.FileExtensions, nameof(decoder.FileExtensions));
-            Guard.NotNullOrEmpty(decoder.MimeTypes, nameof(decoder.MimeTypes));
+            Guard.NotNull(decoder.Format, nameof(decoder.Format));
+            Guard.NotNullOrEmpty(decoder.Format.MimeTypes, nameof(decoder.Format.MimeTypes));
+            Guard.NotNullOrEmpty(decoder.Format.SupportedExtensions, nameof(decoder.Format.SupportedExtensions));
 
             lock (this.syncRoot)
             {
@@ -103,8 +104,10 @@ namespace ImageSharp
         public void AddImageFormat(IImageEncoder encoder)
         {
             Guard.NotNull(encoder, nameof(encoder));
-            Guard.NotNullOrEmpty(encoder.FileExtensions, nameof(encoder.FileExtensions));
-            Guard.NotNullOrEmpty(encoder.MimeTypes, nameof(encoder.MimeTypes));
+            Guard.NotNull(encoder.Format, nameof(encoder.Format));
+            Guard.NotNullOrEmpty(encoder.Format.MimeTypes, nameof(encoder.Format.MimeTypes));
+            Guard.NotNullOrEmpty(encoder.Format.SupportedExtensions, nameof(encoder.Format.SupportedExtensions));
+
             lock (this.syncRoot)
             {
                 this.encoders.Add(encoder);
@@ -120,15 +123,15 @@ namespace ImageSharp
             Configuration config = new Configuration();
 
             // lets try auto loading the known image formats
-            config.AddImageFormat(new Formats.PngEncoder());
-            config.AddImageFormat(new Formats.JpegEncoder());
-            config.AddImageFormat(new Formats.GifEncoder());
-            config.AddImageFormat(new Formats.BmpEncoder());
+            config.AddImageFormat(new PngEncoder());
+            config.AddImageFormat(new JpegEncoder());
+            config.AddImageFormat(new GifEncoder());
+            config.AddImageFormat(new BmpEncoder());
 
-            config.AddImageFormat(new Formats.PngDecoder());
-            config.AddImageFormat(new Formats.JpegDecoder());
-            config.AddImageFormat(new Formats.GifDecoder());
-            config.AddImageFormat(new Formats.BmpDecoder());
+            config.AddImageFormat(new PngDecoder());
+            config.AddImageFormat(new JpegDecoder());
+            config.AddImageFormat(new GifDecoder());
+            config.AddImageFormat(new BmpDecoder());
             return config;
         }
 

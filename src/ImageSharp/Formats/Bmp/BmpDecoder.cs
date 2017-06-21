@@ -29,10 +29,7 @@ namespace ImageSharp.Formats
     public class BmpDecoder : IImageDecoder
     {
         /// <inheritdoc/>
-        public IEnumerable<string> MimeTypes => BmpConstants.MimeTypes;
-
-        /// <inheritdoc/>
-        public IEnumerable<string> FileExtensions => BmpConstants.FileExtensions;
+        public IImageFormat Format => BmpConstants.Format;
 
         /// <inheritdoc/>
         public int HeaderSize => 2;

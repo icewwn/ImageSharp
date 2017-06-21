@@ -5,8 +5,6 @@
 
 namespace ImageSharp.Formats
 {
-    using System;
-    using System.Collections.Generic;
     using System.IO;
 
     using ImageSharp.PixelFormats;
@@ -17,16 +15,13 @@ namespace ImageSharp.Formats
     /// <remarks>The encoder can currently only write 24-bit rgb images to streams.</remarks>
     public class BmpEncoder : IImageEncoder
     {
+        /// <inheritdoc/>
+        public IImageFormat Format => BmpConstants.Format;
+
         /// <summary>
         /// Gets or sets the number of bits per pixel.
         /// </summary>
         public BmpBitsPerPixel BitsPerPixel { get; set; } = BmpBitsPerPixel.Pixel24;
-
-        /// <inheritdoc/>
-        public IEnumerable<string> MimeTypes => BmpConstants.MimeTypes;
-
-        /// <inheritdoc/>
-        public IEnumerable<string> FileExtensions => BmpConstants.FileExtensions;
 
         /// <inheritdoc/>
         public void Encode<TPixel>(Image<TPixel> image, Stream stream)

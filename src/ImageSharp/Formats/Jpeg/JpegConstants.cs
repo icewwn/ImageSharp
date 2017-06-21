@@ -18,16 +18,6 @@ namespace ImageSharp.Formats
         public const ushort MaxLength = 65535;
 
         /// <summary>
-        /// The list of mimetypes that equate to a jpeg
-        /// </summary>
-        public static readonly IEnumerable<string> MimeTypes = new[] { "image/jpeg", "image/pjpeg" };
-
-        /// <summary>
-        /// The list of mimetypes that equate to a jpeg
-        /// </summary>
-        public static readonly IEnumerable<string> FileExtensions = new[] { "jpg", "jpeg", "jfif" };
-
-        /// <summary>
         /// Represents high detail chroma horizontal subsampling.
         /// </summary>
         public static readonly byte[] ChromaFourFourFourHorizontal = { 0x11, 0x11, 0x11 };
@@ -56,6 +46,15 @@ namespace ImageSharp.Formats
         /// Represents low detail chroma horizontal subsampling.
         /// </summary>
         public static readonly byte[] ChromaFourTwoZeroHorizontal = { 0x22, 0x11, 0x11 };
+
+        /// <summary>
+        /// The format that equates to a jpg
+        /// </summary>
+        public static readonly IImageFormat Format = new ImageFormat()
+        {
+            MimeTypes = new[] { "image/jpeg", "image/pjpeg" },
+            SupportedExtensions = new[] { "jpg", "jpeg", "jfif" }
+        };
 
         /// <summary>
         /// Describes component ids for start of frame components.

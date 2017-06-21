@@ -6,13 +6,13 @@
 namespace ImageSharp.Benchmarks.Image
 {
     using System.Collections.Generic;
-    using System.Drawing.Imaging;
 
     using BenchmarkDotNet.Attributes;
 
     using ImageSharp.Formats;
 
-    
+    using ImageFormat = System.Drawing.Imaging.ImageFormat;
+
     [Config(typeof(Config.Short))] // It's long enough to iterate through multiple files
     public class EncodeJpegMultiple : MultiImageBenchmarkBase.WithImagesPreloaded
     {

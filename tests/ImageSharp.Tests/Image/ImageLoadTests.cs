@@ -34,8 +34,8 @@ namespace ImageSharp.Tests
             this.returnImage = new Image<Rgba32>(1, 1);
 
             this.localDecoder = new Mock<IImageDecoder>();
-            this.localDecoder.Setup(x => x.MimeTypes).Returns(new[] { "img/test" });
-            this.localDecoder.Setup(x => x.FileExtensions).Returns(new[] { "png", "jpg" });
+            this.localDecoder.Setup(x => x.Format.MimeTypes).Returns(new[] { "img/test" });
+            this.localDecoder.Setup(x => x.Format.SupportedExtensions).Returns(new[] { "png", "jpg" });
             this.localDecoder.Setup(x => x.HeaderSize).Returns(1);
             this.localDecoder.Setup(x => x.IsSupportedFileFormat(It.IsAny<Span<byte>>())).Returns(true);
 

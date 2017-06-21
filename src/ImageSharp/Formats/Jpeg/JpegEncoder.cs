@@ -5,8 +5,6 @@
 
 namespace ImageSharp.Formats
 {
-    using System;
-    using System.Collections.Generic;
     using System.IO;
 
     using ImageSharp.PixelFormats;
@@ -16,6 +14,9 @@ namespace ImageSharp.Formats
     /// </summary>
     public class JpegEncoder : IImageEncoder
     {
+        /// <inheritdoc/>
+        public IImageFormat Format => JpegConstants.Format;
+
         /// <summary>
         /// Gets or sets a value indicating whether the metadata should be ignored when the image is being decoded.
         /// </summary>
@@ -33,12 +34,6 @@ namespace ImageSharp.Formats
         /// </summary>
         /// <value>The subsample ratio of the jpg image.</value>
         public JpegSubsample? Subsample { get; set; }
-
-        /// <inheritdoc/>
-        public IEnumerable<string> MimeTypes => JpegConstants.MimeTypes;
-
-        /// <inheritdoc/>
-        public IEnumerable<string> FileExtensions => JpegConstants.FileExtensions;
 
         /// <summary>
         /// Encodes the image to the specified stream from the <see cref="Image{TPixel}"/>.

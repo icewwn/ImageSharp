@@ -4,7 +4,6 @@
 // </copyright>
 namespace ImageSharp.Formats
 {
-    using System.Collections.Generic;
     using System.Text;
 
     /// <summary>
@@ -18,13 +17,12 @@ namespace ImageSharp.Formats
         public static readonly Encoding DefaultEncoding = Encoding.GetEncoding("ASCII");
 
         /// <summary>
-        /// The list of mimetypes that equate to a jpeg
+        /// The format that equates to a png
         /// </summary>
-        public static readonly IEnumerable<string> MimeTypes = new[] { "image/png" };
-
-        /// <summary>
-        /// The list of mimetypes that equate to a jpeg
-        /// </summary>
-        public static readonly IEnumerable<string> FileExtensions = new[] { "png" };
+        public static readonly IImageFormat Format = new ImageFormat()
+        {
+            MimeTypes = new[] { "image/png" },
+            SupportedExtensions = new[] { "png" }
+        };
     }
 }

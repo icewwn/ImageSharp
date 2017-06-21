@@ -30,12 +30,12 @@ namespace ImageSharp
         /// Create a new instance of the <see cref="Image{Rgba32}"/> class from the given file.
         /// </summary>
         /// <param name="path">The file path to the image.</param>
-        /// <param name="mimeType">the mime type of the decoded image.</param>
+        /// <param name="format">The format of the decoded image.</param>
         /// <exception cref="NotSupportedException">
         /// Thrown if the stream is not readable nor seekable.
         /// </exception>
         /// <returns>A new <see cref="Image{Rgba32}"/>.</returns>
-        public static Image<Rgba32> Load(string path, out string mimeType) => Load<Rgba32>(path, out mimeType);
+        public static Image<Rgba32> Load(string path, out IImageFormat format) => Load<Rgba32>(path, out format);
 
         /// <summary>
         /// Create a new instance of the <see cref="Image{Rgba32}"/> class from the given file.
@@ -53,12 +53,12 @@ namespace ImageSharp
         /// </summary>
         /// <param name="config">The config for the decoder.</param>
         /// <param name="path">The file path to the image.</param>
-        /// <param name="mimeType">the mime type of the decoded image.</param>
+        /// <param name="format">The format of the decoded image.</param>
         /// <exception cref="NotSupportedException">
         /// Thrown if the stream is not readable nor seekable.
         /// </exception>
         /// <returns>A new <see cref="Image{Rgba32}"/>.</returns>
-        public static Image<Rgba32> Load(Configuration config, string path, out string mimeType) => Load<Rgba32>(config, path, out mimeType);
+        public static Image<Rgba32> Load(Configuration config, string path, out IImageFormat format) => Load<Rgba32>(config, path, out format);
 
         /// <summary>
         /// Create a new instance of the <see cref="Image{Rgba32}"/> class from the given file.
@@ -102,16 +102,16 @@ namespace ImageSharp
         /// Create a new instance of the <see cref="Image{TPixel}"/> class from the given file.
         /// </summary>
         /// <param name="path">The file path to the image.</param>
-        /// <param name="mimeType">the mime type of the decoded image.</param>
+        /// <param name="format">The format of the decoded image.</param>
         /// <exception cref="NotSupportedException">
         /// Thrown if the stream is not readable nor seekable.
         /// </exception>
         /// <typeparam name="TPixel">The pixel format.</typeparam>
         /// <returns>A new <see cref="Image{TPixel}"/>.</returns>
-        public static Image<TPixel> Load<TPixel>(string path, out string mimeType)
+        public static Image<TPixel> Load<TPixel>(string path, out IImageFormat format)
             where TPixel : struct, IPixel<TPixel>
         {
-            return Load<TPixel>(null, path, out mimeType);
+            return Load<TPixel>(null, path, out format);
         }
 
         /// <summary>
@@ -139,19 +139,19 @@ namespace ImageSharp
         /// </summary>
         /// <param name="config">The configuration options.</param>
         /// <param name="path">The file path to the image.</param>
-        /// <param name="mimeType">the mime type of the decoded image.</param>
+        /// <param name="format">The format of the decoded image.</param>
         /// <exception cref="NotSupportedException">
         /// Thrown if the stream is not readable nor seekable.
         /// </exception>
         /// <typeparam name="TPixel">The pixel format.</typeparam>
         /// <returns>A new <see cref="Image{TPixel}"/>.</returns>
-        public static Image<TPixel> Load<TPixel>(Configuration config, string path, out string mimeType)
+        public static Image<TPixel> Load<TPixel>(Configuration config, string path, out IImageFormat format)
             where TPixel : struct, IPixel<TPixel>
         {
             config = config ?? Configuration.Default;
             using (Stream s = config.FileSystem.OpenRead(path))
             {
-                return Load<TPixel>(config, s, out mimeType);
+                return Load<TPixel>(config, s, out format);
             }
         }
 

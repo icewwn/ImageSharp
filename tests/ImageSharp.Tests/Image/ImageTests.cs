@@ -6,6 +6,7 @@
 namespace ImageSharp.Tests
 {
     using System;
+    using System.Linq;
 
     using ImageSharp.Formats;
     using ImageSharp.PixelFormats;
@@ -76,7 +77,7 @@ namespace ImageSharp.Tests
 
             using (Image<Rgba32> img = Image.Load(file, out var mime))
             {
-                Assert.Equal("image/png", mime);
+                Assert.Equal("image/png", mime.MimeTypes.First());
             }
         }
 
@@ -103,9 +104,9 @@ namespace ImageSharp.Tests
             {
                 image.Save(file, new PngEncoder());
             }
-            using (Image<Rgba32> img = Image.Load(file, out var mime))
+            using (Image<Rgba32> img = Image.Load(file, out var format))
             {
-                Assert.Equal("image/png", mime);
+                Assert.Equal("image/png", format.MimeTypes.First());
             }
         }
     }
